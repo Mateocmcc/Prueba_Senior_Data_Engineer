@@ -45,7 +45,7 @@ Todo el flujo puede automatizarse mediante un DAG estilo Airflow, ejecutando cad
 - Los datos incluidos son de ejemplo; para probar con datos reales reemplaza los archivos en data/source/.
 
 ## Arquitectura Propuesta:
-
+![Diagrama](Diagrama_Arquitectura.png)
 - Bronze: capa de ingesta, datos crudos sin procesar.
 - Silver: datos limpios, sin duplicados, reglas de negocio aplicadas.
 - Gold: métricas agregadas, KPIs y tablas listas para análisis.
