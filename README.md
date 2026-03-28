@@ -13,9 +13,13 @@ Se incluyen **capas Bronze, Silver y Gold**, con validaciones de calidad y traza
 ## Ejecución
 - Creación de datos muestra - COMANDO - python src/Data/datos.py
 - Ejecutar la ingesta de datos (Bronze) - COMANDO: python -m src.ingestion.Ingestas
-- Transformar datos (silver) - COMANDO: python -m src.transformation.silver_transform
+- Transformar datos (silver) y calidad, dentro del modulo de silver se encuentra integrado las validaciones de calidad - COMANDO: python -m src.transformation.silver_transform
+- Ejecucion Calidad - COMANDO: python -m src.calidad.validacion_calidad
 - Generar metricas (Gold) - COMANDO: python -m src.transformation.gold_transform
 - Visualizar datos (resumen de Kpis) - COMANDO: python -m src.Visualizacion.query_gold
+
+### Ejecucion total
+- Se diseña la ejecucion para que sea similar a un DAG en airflow indicando el flujo que se debe seguir paso a paso para que se ejecute correctamente. Comando - c:/Users/cmcamargoce/data_pipeline/Ejecucion_proceso.py 
 
 ## Notas importantes:
 - Cada capa genera datos en su respectiva carpeta:
