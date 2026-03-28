@@ -9,6 +9,21 @@ Se incluyen **capas Bronze, Silver y Gold**, con validaciones de calidad y traza
 - Python 3.10+  
 - Instalar las dependencias (librerias)
 - Configurar las variables de entorno
+  
+## Descripcion del pipeline
+El pipeline procesa datos transaccionales siguiendo un modelo tipo Medallion (Bronze → Silver → Gold):
+
+#### 1. Ingesta de datos: 
+Los datos provienen de archivos JSON o CSV, generados aleatoriamente mediante funciones de Python para cumplir con la estructura de las tres tablas principales (users, transactions, transaction_details).
+#### 2. Capa Bronze:
+Los datos se almacenan en su forma cruda, sin modificaciones ni limpieza. Esta capa permite mantener un registro íntegro de la información original para trazabilidad.
+#### 3. Capa Silver:
+Se aplican limpieza, validación de esquema y reglas de negocio, eliminando duplicados y asegurando la integridad referencial. Los datos se guardan en formato Parquet, optimizado para análisis y consultas eficientes.
+#### 4. Capa Gold:
+Se calculan métricas agregadas y KPIs, listas para análisis y visualización. Los resultados se pueden consultar mediante SQL usando DuckDB, permitiendo extraer información útil para la toma de decisiones.
+#### 5. Automatización y orquestación:
+Todo el flujo puede automatizarse mediante un DAG estilo Airflow, ejecutando cada paso en secuencia. En caso de errores, se pueden generar alertas específicas para identificar rápidamente el paso afectado.
+
 
 ## Ejecución
 - Creación de datos muestra - COMANDO - python src/Data/datos.py
