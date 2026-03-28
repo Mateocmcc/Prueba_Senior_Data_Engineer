@@ -27,7 +27,7 @@ def run():
     save_to_bronze(transactions, "transactions")
     save_to_bronze(details, "transaction_details")
 
-    print("✅ Ingesta completada a Bronze")
+    print("Ingesta completada a Bronze")
 
 if __name__ == "__main__":
     run()
