@@ -12,17 +12,17 @@ def save_gold(df, name):
     df.to_parquet(f"{GOLD_PATH}/{name}.parquet", index=False)
 
 def run():
-    print("🚀 Generando capa Gold")
+    print(" Generando capa Gold")
 
     users = read_silver("users")
     transactions = read_silver("transactions")
     details = read_silver("transaction_details")
 
-    # 🔗 Join completo
+    # Join completo
     df = transactions.merge(users, on="user_id", how="inner")
     df = df.merge(details, on="transaction_id", how="left")
 
-    # 💰 KPIs generales
+    # KPIs generales
     total_transactions = len(df)
     total_amount = df["amount"].sum()
     success_rate = (df["status"] == "success").mean()
@@ -33,26 +33,26 @@ def run():
     "success_rate": success_rate
 }])
 
-    # 👤 Métricas por usuario
+    # Métricas por usuario
     user_metrics = df.groupby("user_id").agg(
         total_transactions=("transaction_id", "count"),
         total_amount=("amount", "sum"),
         success_rate=("status", lambda x: (x == "success").mean())
     ).reset_index()
 
-    # 💳 Por método de pago
+    # Por método de pago
     payment_metrics = df.groupby("payment_method").agg(
         total_transactions=("transaction_id", "count"),
         total_amount=("amount", "sum")
     ).reset_index()
 
-    # 📱 Por canal
+    # Por canal
     channel_metrics = df.groupby("channel").agg(
         total_transactions=("transaction_id", "count"),
         avg_processing_time=("processing_time_ms", "mean")
     ).reset_index()
 
-    # 💾 Guardar
+    # Guardar
     save_gold(kpis, "kpis_generales")
     save_gold(user_metrics, "user_metrics")
     save_gold(payment_metrics, "payment_metrics")
