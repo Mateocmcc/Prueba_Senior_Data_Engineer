@@ -50,7 +50,7 @@ def run():
     transactions.to_json("data/source/transactions.json", orient="records", lines=True, mode="w")
     details.to_json("data/source/transaction_details.json", orient="records", lines=True, mode="w")
 
-    print("Datos generados en Bronze")
+    print("Datos generados en source")
 
 if __name__ == "__main__":
     run()
