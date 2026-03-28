@@ -58,7 +58,7 @@ def run():
     save_gold(payment_metrics, "payment_metrics")
     save_gold(channel_metrics, "channel_metrics")
 
-    print("✅ Gold listo")
+    print("Gold listo")
 
 if __name__ == "__main__":
     run()
