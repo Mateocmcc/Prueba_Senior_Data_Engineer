@@ -11,6 +11,7 @@ Se incluyen **capas Bronze, Silver y Gold**, con validaciones de calidad y traza
 - Configurar las variables de entorno
 
 ## Ejecución
+- Creación de datos muestra - COMANDO - python src/Data/datos.py
 - Ejecutar la ingesta de datos (Bronze) - COMANDO: python -m src.ingestion.Ingestas
 - Transformar datos (silver) - COMANDO: python -m src.transformation.silver_transform
 - Generar metricas (Gold) - COMANDO: python -m src.transformation.gold_transform
@@ -33,6 +34,7 @@ Se incluyen **capas Bronze, Silver y Gold**, con validaciones de calidad y traza
 
 ## Decisiones técnicas
 - Python + Pandas: para ingesta, transformación y limpieza de datos, suficiente para datasets medianos.
+- Generación de datos aleatorios con las caracteristicas solicitadas (campos).
 - DuckDB: motor SQL embebido, ideal para exponer Gold de forma rápida y ligera.
 - JSON → Parquet:
   Guardar Bronze en JSON crudo (fácil de inspeccionar).
