@@ -70,5 +70,5 @@ Todo el flujo puede automatizarse mediante un DAG estilo Airflow, ejecutando cad
 - Se incluyen las capturas/logs del flujo del proceso tanto paso a paso como la ejecucion (Dags)
  #### Paso a Paso:
   ![Paso a Paso](Log_Paso_a_Paso.png "Paso a Paso")
-#### Ejcución Total:
+#### Ejecución Total:
   ![Ejecucion_Total](Log_Ejecucion_Flujo.png "Ejcución Total")
